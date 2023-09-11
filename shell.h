@@ -13,6 +13,7 @@
 extern char **environ;
 
 void _execve(char *str, char *filename);
-char *_getline();
+char *_getline(void);
+void prompt(void);
 
 #endif

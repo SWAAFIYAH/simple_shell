@@ -9,17 +9,12 @@
 
 int main(int argc, char *argv[])
 {
-	char *path, *buf;
-	size_t fd;
+	char *path;
 	pid_t p_id;
 
-	fd = STDIN_FILENO;
-	buf = "($) ";
 	while (1)
 	{
-		if (isatty(fd))
-			write(1, buf, 4);
-
+		prompt();
 		if (argc > 1)
 			return (0);
 
