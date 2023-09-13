@@ -7,17 +7,12 @@
  * Return: nothing
  */
 
-void _execve(char *str, char *filename)
+void _execve(char **str, char *filename)
 {
-	char *argv[100];
-
-	argv[0] = str;
-	argv[1] = NULL;
-
-	if (execve(argv[0], argv, environ) == -1)
+	if (execve(str[0], str, environ) == -1)
 	{
 		perror(filename);
-		free(str);
+		free_strtok(str);
 		exit(EXIT_FAILURE);
 	}
 }

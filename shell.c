@@ -9,11 +9,12 @@
 
 int main(int argc, char *argv[])
 {
-	char *path;
+	char *path, **command;
 	pid_t p_id;
 
 	while (1)
 	{
+		signal(SIGINT, signal_handler);
 		prompt();
 		if (argc > 1)
 			return (0);
@@ -25,19 +26,21 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
+		command = _strtok(path);
+		free(path);
 		p_id = fork();
 		if (p_id == -1)
 		{
 			perror(argv[0]);
-			free(path);
+			free_strtok(command);
 			exit(EXIT_FAILURE);
 		}
 		if (p_id == 0)
 		{
-			_execve(path, argv[0]);
+			_execve(command, argv[0]);
 		}
 		wait(NULL);
-		free(path);
+		free_strtok(command);
 	}
 	return (0);
 }

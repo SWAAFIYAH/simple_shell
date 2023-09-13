@@ -20,7 +20,7 @@ char *_getline()
 		exit(EXIT_FAILURE);
 	}
 
-	if (buf[line - 1] == '\n')
+	if (line > 0 && buf[line - 1] == '\n')
 		buf[line - 1] = '\0';
 
 	return (buf);
