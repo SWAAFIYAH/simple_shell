@@ -41,7 +41,6 @@ char **_strtok(char *str)
 		}
 	}
 
-	len = 0;
 	ptr = malloc(sizeof(char *) * (len + 2));
 	if (ptr == NULL)
 	{
@@ -50,7 +49,7 @@ char **_strtok(char *str)
 	}
 
 	i = 0;
-	word = strtok(copy, "");
+	word = strtok(copy, " ");
 	while (i <= len)
 	{
 		ptr[i] = strcopy(word);
