@@ -12,6 +12,8 @@
 
 extern char **environ;
 
+char *check_command(char *str);
+char *get_path_value(void);
 void signal_handler(int sig_id);
 void _execve(char **str, char *filename);
 char *_getline(void);

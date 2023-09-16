@@ -16,7 +16,6 @@ void free_strtok(char **str)
 		free(str[i]);
 		i++;
 	}
-	free(str[i]);
 	free(str);
 }
 
@@ -28,7 +27,7 @@ void free_strtok(char **str)
 
 char **_strtok(char *str)
 {
-	char *word, **ptr, *copy;
+	char *word, **ptr, *copy, *command;
 	int i, len;
 
 	copy = strcopy(str);
@@ -57,6 +56,15 @@ char **_strtok(char *str)
 		i++;
 	}
 	ptr[i] = NULL;
+	command = check_command(ptr[0]);
+	if (command == NULL)
+	{
+		free(copy);
+		free_strtok(ptr);
+		return (NULL);
+	}
+	free(ptr[0]);
+	ptr[0] = command;
 	free(copy);
 	return (ptr);
 }

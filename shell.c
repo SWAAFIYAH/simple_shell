@@ -28,6 +28,11 @@ int main(int argc, char *argv[])
 
 		command = _strtok(path);
 		free(path);
+		if (command == NULL)
+		{
+			perror(argv[0]);
+			continue;
+		}
 		p_id = fork();
 		if (p_id == -1)
 		{
