@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
+		exit_shell(path);
 		command = _strtok(path);
 		free(path);
 		if (command == NULL)
