@@ -24,6 +24,6 @@ int _strlen(char *str);
 int strcpr(char *str1, char *str2);
 void free_strtok(char **str);
 char **_strtok(char *str);
-void exit_shell(char *str);
+void exec_built_in(char *str);
 
 #endif

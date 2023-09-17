@@ -20,13 +20,12 @@ int main(int argc, char *argv[])
 			return (0);
 
 		path = _getline();
-		if (path[0] ==  '\0')
+		exec_built_in(path);
+		if (path[0] ==  '\0' || path == NULL)
 		{
 			free(path);
 			continue;
 		}
-
-		exit_shell(path);
 		command = _strtok(path);
 		free(path);
 		if (command == NULL)
