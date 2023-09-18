@@ -25,5 +25,7 @@ int strcpr(char *str1, char *str2);
 void free_strtok(char **str);
 char **_strtok(char *str);
 void exec_built_in(char *str);
+void _perror(char *file, int number, char *command);
+int _atoi(int num);
 
 #endif
