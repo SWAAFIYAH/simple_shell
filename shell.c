@@ -12,13 +12,13 @@ int main(int argc, char *argv[])
 	char *path, **command;
 	pid_t p_id, count = 0;
 
+	if (argc > 1)
+		return (0);
 	while (1)
 	{
 		count++;
 		signal(SIGINT, signal_handler);
 		prompt();
-		if (argc > 1)
-			return (0);
 		path = _getline();
 		exec_built_in(path);
 		if (path[0] ==  '\0' || path == NULL)
