@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 		prompt();
 		path = _getline();
 		exec_built_in(path);
-		if (path[0] ==  '\0' || path == NULL)
+		if (path[0] ==  '\0' || path == NULL || strcpr(path, "env") == 1)
 		{
 			free(path);
 			continue;
