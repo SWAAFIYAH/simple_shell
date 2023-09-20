@@ -9,7 +9,7 @@ char *_getline()
 {
 	char *buf = NULL;
 	size_t size = 0;
-	ssize_t  line;
+	ssize_t  line = 0;
 
 	line = getline(&buf, &size, stdin);
 	if (line == -1)
