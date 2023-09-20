@@ -8,15 +8,16 @@
 
 void free_strtok(char **str)
 {
-	int i;
+	char **tmp = str;
 
-	i = 0;
-	while (str[i] != NULL)
+	if (str)
 	{
-		free(str[i]);
-		i++;
+		while (*str)
+		{
+			free(*str++);
+		}
+		free(tmp);
 	}
-	free(str);
 }
 
 /**
