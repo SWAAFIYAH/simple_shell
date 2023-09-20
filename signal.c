@@ -10,5 +10,5 @@
 void signal_handler(int sig_id)
 {
 	if (sig_id == SIGINT)
-		write(STDOUT_FILENO, "\n($) ", 5);
+		write(STDOUT_FILENO, "\n($)", 4);
 }

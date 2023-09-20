@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-	char *path, **command;
+	char  *path, *command[2];
 	pid_t p_id, count = 0;
 
 	if (argc > 1)
@@ -18,34 +18,34 @@ int main(int argc, char *argv[])
 	{
 		count++;
 		signal(SIGINT, signal_handler);
+		prompt();
 		path = _getline();
-		exec_built_in(path);
-		if (path[0] ==  '\0' || path == NULL || strcpr(path, "env") == 1)
+		if  (path == NULL)
 		{
-			free(path);
-			continue;
+			break;
 		}
-		command = _strtok(path);
-		if (command == NULL)
-		{
-			_perror(argv[0], count, path);
-			free(path);
-			continue;
-		}
-		free(path);
+		command[0] = path;
+		command[1] = NULL;
 		p_id = fork();
 		if (p_id == -1)
 		{
 			perror(argv[0]);
-			free_strtok(command);
 			exit(EXIT_FAILURE);
 		}
 		if (p_id == 0)
-			_execve(command, argv[0]);
-		wait(NULL);
-		free_strtok(command);
-	}
-		if (path != NULL)
+		{
+			if (execve(command[0], command, environ) == -1)
+			{
+				perror(argv[0]);
+				exit(EXIT_FAILURE);
+			}
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			wait(NULL);
 			free(path);
+		}
+	}
 	return (0);
 }

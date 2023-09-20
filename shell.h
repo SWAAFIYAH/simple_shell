@@ -12,20 +12,8 @@
 
 extern char **environ;
 
-char *check_command(char *str);
-char *get_path_value(void);
 void signal_handler(int sig_id);
-void _execve(char **str, char *filename);
 char *_getline(void);
 void prompt(void);
-char *strconcat(char *str1, char *str2, char *str3);
-char *strcopy(char *str);
-int _strlen(char *str);
-int strcpr(char *str1, char *str2);
-void free_strtok(char **str);
-char **_strtok(char *str);
-void exec_built_in(char *str);
-void _perror(char *file, int number, char *command);
-int _atoi(int num);
 
 #endif
