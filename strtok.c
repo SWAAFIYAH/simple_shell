@@ -28,11 +28,12 @@ void free_strtok(char **str)
 
 char **_strtok(char *str)
 {
-	char *word, **ptr, *copy, *command;
-	int i, len;
+	char *word = NULL, **ptr = NULL, *copy = NULL, *command = NULL;
+	int i, len = 0;
 
+	if (str == NULL)
+		return (NULL);
 	copy = strcopy(str);
-	len = 0;
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] == ' ')
@@ -40,14 +41,12 @@ char **_strtok(char *str)
 			len++;
 		}
 	}
-
 	ptr = malloc(sizeof(char *) * (len + 2));
 	if (ptr == NULL)
 	{
 		free(copy);
 		return (NULL);
 	}
-
 	i = 0;
 	word = strtok(copy, " ");
 	while (i <= len)
@@ -66,6 +65,7 @@ char **_strtok(char *str)
 	}
 	free(ptr[0]);
 	ptr[0] = command;
+	command = NULL;
 	free(copy);
-	return (ptr);
+	return(ptr);
 }
