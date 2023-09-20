@@ -38,7 +38,7 @@ char *get_path_value(void)
 
 char *check_command(char *str)
 {
-	char *word, *path_value, *file_path;
+	char *word = NULL, *path_value = NULL, *file_path = NULL;
 	struct stat fs;
 
 	if (str == NULL)

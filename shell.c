@@ -18,7 +18,6 @@ int main(int argc, char *argv[])
 	{
 		count++;
 		signal(SIGINT, signal_handler);
-		prompt();
 		path = _getline();
 		exec_built_in(path);
 		if (path[0] ==  '\0' || path == NULL || strcpr(path, "env") == 1)
