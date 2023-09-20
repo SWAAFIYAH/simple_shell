@@ -42,11 +42,11 @@ int main(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 		if (p_id == 0)
-		{
 			_execve(command, argv[0]);
-		}
 		wait(NULL);
 		free_strtok(command);
 	}
+		if (path != NULL)
+			free(path);
 	return (0);
 }
