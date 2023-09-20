@@ -14,5 +14,5 @@ void prompt(void)
 	buf = ":) ";
 
 	if (isatty(fd))
-		write(1, buf, 4);
+		write(1, buf, 3);
 }
