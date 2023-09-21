@@ -50,5 +50,7 @@ void _perror(char *file, int number, char *command)
 	write(2, ": ", 2);
 	write(2, command, _strlen(command));
 	write(2, ": ", 2);
-	write(2, "not found \n", 11);
+	write(2, "not found\n", 10);
+	free(command);
+	exit(127);
 }

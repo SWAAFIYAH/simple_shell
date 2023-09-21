@@ -28,7 +28,7 @@ void free_strtok(char **str)
 
 char **_strtok(char *str)
 {
-	char *word = NULL, **ptr = NULL, *copy = NULL;
+	char *word = NULL, **ptr = NULL, *copy = NULL, *command = NULL;
 	int i, len = 0;
 
 	if (str == NULL)
@@ -56,6 +56,16 @@ char **_strtok(char *str)
 		i++;
 	}
 	ptr[i] = NULL;
+	command = check_command(ptr[0]);
+	if (command == NULL)
+	{
+		free(copy);
+		free_strtok(ptr);
+		return (NULL);
+	}
+	free(ptr[0]);
+	ptr[0] = command;
+	command = NULL;
 	free(copy);
 	return (ptr);
 }

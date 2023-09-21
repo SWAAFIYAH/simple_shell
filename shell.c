@@ -10,12 +10,13 @@
 int main(int argc, char *argv[])
 {
 	char  *path, **command = NULL;
-	pid_t p_id;
+	pid_t p_id, count = 0;
 
 	if (argc > 1)
 		return (0);
 	while (1)
 	{
+		count++;
 		signal(SIGINT, signal_handler);
 		prompt();
 		path = _getline();
@@ -27,16 +28,16 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		command = _strtok(path);
-		if (command[0] == NULL)
+		if (command == NULL)
 		{
+			_perror(argv[0], count, path);
 			free(path);
-			free_strtok(command);
 			continue;
 		}
 		p_id = fork();
 		if (p_id == -1)
 		{
-			perror(argv[0]);
+			_perror(argv[0], count, command[0]);
 			exit(EXIT_FAILURE);
 		}
 		if (p_id == 0)
