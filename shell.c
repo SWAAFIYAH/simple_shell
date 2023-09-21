@@ -21,13 +21,15 @@ int main(int argc, char *argv[])
 		path = _getline();
 		if  (path == NULL)
 			break;
-		if (path[0] == '\0')
+		if (path[0] == '\0' || strcpr(path, "nil") == 1)
 		{
 			free(path);
 			continue;
 		}
 		word = strtok(path, " ");
 		command[0] = word;
+		if (word == NULL)
+			continue;
 		p_id = fork();
 		if (p_id == -1)
 		{
@@ -42,11 +44,8 @@ int main(int argc, char *argv[])
 				exit(EXIT_FAILURE);
 			}
 		}
-		else
-		{
-			wait(NULL);
-			free(path);
-		}
+		wait(NULL);
+		free(path);
 	}
 	return (0);
 }

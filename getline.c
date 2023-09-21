@@ -19,6 +19,10 @@ char *_getline()
 			write(STDOUT_FILENO, "\n", 1);
 		return (NULL);
 	}
+	if (line == 0)
+	{
+		return("nil");
+	}
 
 	if (line > 0 && buf[line - 1] == '\n')
 		buf[line - 1] = '\0';
