@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 		if (command[0] == NULL)
 		{
 			free(path);
+			free_strtok(command);
 			continue;
 		}
 		p_id = fork();

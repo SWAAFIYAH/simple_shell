@@ -22,5 +22,8 @@ void _execve(char **str, char *filename);
 char **_strtok(char *str);
 void free_strtok(char **str);
 char *strcopy(char *str);
+char *strconcat(char *str1, char *str2, char *str3);
+char *get_path_value(void);
+char *check_command(char *str);
 
 #endif

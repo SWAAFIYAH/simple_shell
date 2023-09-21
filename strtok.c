@@ -57,5 +57,5 @@ char **_strtok(char *str)
 	}
 	ptr[i] = NULL;
 	free(copy);
-	return(ptr);
+	return (ptr);
 }
