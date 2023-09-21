@@ -29,7 +29,10 @@ int main(int argc, char *argv[])
 		word = strtok(path, " ");
 		command[0] = word;
 		if (word == NULL)
+		{
+			free(path);
 			continue;
+		}
 		p_id = fork();
 		if (p_id == -1)
 		{
@@ -38,11 +41,7 @@ int main(int argc, char *argv[])
 		}
 		if (p_id == 0)
 		{
-			if (execve(command[0], command, environ) == -1)
-			{
-				perror(argv[0]);
-				exit(EXIT_FAILURE);
-			}
+			_execve(command, argv[0]);
 		}
 		wait(NULL);
 		free(path);

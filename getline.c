@@ -21,7 +21,7 @@ char *_getline()
 	}
 	if (line == 0)
 	{
-		return("nil");
+		return ("nil");
 	}
 
 	if (line > 0 && buf[line - 1] == '\n')
