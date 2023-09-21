@@ -29,14 +29,14 @@ int main(int argc, char *argv[])
 		p_id = fork();
 		if (p_id == -1)
 		{
-			perror(argv[0]);
+			_perror(argv[0], count, path);
 			exit(EXIT_FAILURE);
 		}
 		if (p_id == 0)
 		{
 			if (execve(command[0], command, environ) == -1)
 			{
-				perror(argv[0]);
+				_perror(argv[0], count, path);
 				exit(EXIT_FAILURE);
 			}
 			exit(EXIT_SUCCESS);
