@@ -19,5 +19,8 @@ void _perror(char *file, int number, char *command);
 int _strlen(char *str);
 int strcpr(char *str1, char *str2);
 void _execve(char **str, char *filename);
+char **_strtok(char *str);
+void free_strtok(char **str);
+char *strcopy(char *str);
 
 #endif

@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-	char  *path, *command[2] = {NULL, NULL}, *word;
+	char  *path, **command = NULL;
 	pid_t p_id;
 
 	if (argc > 1)
@@ -26,9 +26,8 @@ int main(int argc, char *argv[])
 			free(path);
 			continue;
 		}
-		word = strtok(path, " ");
-		command[0] = word;
-		if (word == NULL)
+		command = _strtok(path);
+		if (command[0] == NULL)
 		{
 			free(path);
 			continue;
@@ -45,6 +44,7 @@ int main(int argc, char *argv[])
 		}
 		wait(NULL);
 		free(path);
+		free_strtok(command);
 	}
 	return (0);
 }
