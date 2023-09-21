@@ -9,38 +9,38 @@
 
 int main(int argc, char *argv[])
 {
-	char  *path, *command[2], *word;
-	pid_t p_id, count = 0;
+	char  *path, *command[2] = {NULL, NULL}, *word;
+	pid_t p_id;
 
 	if (argc > 1)
 		return (0);
 	while (1)
 	{
-		count++;
 		signal(SIGINT, signal_handler);
 		prompt();
 		path = _getline();
 		if  (path == NULL)
-		{
 			break;
+		if (path[0] == '\0')
+		{
+			free(path);
+			continue;
 		}
 		word = strtok(path, " ");
 		command[0] = word;
-		command[1] = NULL;
 		p_id = fork();
 		if (p_id == -1)
 		{
-			_perror(argv[0], count, path);
+			perror(argv[0]);
 			exit(EXIT_FAILURE);
 		}
 		if (p_id == 0)
 		{
 			if (execve(command[0], command, environ) == -1)
 			{
-				_perror(argv[0], count, path);
+				perror(argv[0]);
 				exit(EXIT_FAILURE);
 			}
-			exit(EXIT_SUCCESS);
 		}
 		else
 		{
