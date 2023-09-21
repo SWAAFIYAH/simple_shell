@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-	char  *path, *command[2];
+	char  *path, *command[2], *word;
 	pid_t p_id, count = 0;
 
 	if (argc > 1)
@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
 		{
 			break;
 		}
-		command[0] = path;
+		word = strtok(path, " ");
+		command[0] = word;
 		command[1] = NULL;
 		p_id = fork();
 		if (p_id == -1)
