@@ -16,6 +16,7 @@ void signal_handler(int sig_id);
 char *_getline(void);
 void prompt(void);
 void _perror(char *file, int number, char *command);
+void exec_built_in(char *str);
 int _strlen(char *str);
 int strcpr(char *str1, char *str2);
 void _execve(char **str, char *filename);

@@ -12,6 +12,6 @@ void _execve(char **str, char *filename)
 	{
 		perror(filename);
 		free(str[0]);
-		exit(EXIT_FAILURE);
+		exit(2);
 	}
 }

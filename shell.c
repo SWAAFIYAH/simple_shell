@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-	char  *path, **command = NULL;
+	char  *path = NULL, **command = NULL;
 	pid_t p_id, count = 0;
 
 	if (argc > 1)
@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
 		command = _strtok(path);
 		if (command == NULL)
 		{
-			_perror(argv[0], count, path);
 			free(path);
 			continue;
 		}
@@ -38,11 +37,12 @@ int main(int argc, char *argv[])
 		if (p_id == -1)
 		{
 			_perror(argv[0], count, command[0]);
-			exit(EXIT_FAILURE);
+			exit(127);
 		}
 		if (p_id == 0)
 		{
 			_execve(command, argv[0]);
+			exit(EXIT_FAILURE);
 		}
 		wait(NULL);
 		free(path);
